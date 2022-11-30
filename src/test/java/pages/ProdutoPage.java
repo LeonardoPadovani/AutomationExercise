@@ -81,11 +81,11 @@ public class ProdutoPage extends BasePage {
 
     }
 
-    public void deleteProduct(){
+    public void deleteProduct(String product){
         super.driver.findElements(By.tagName("tr")).stream()
                 .skip(1)
                 .map(tr -> tr.findElements(By.tagName("td")))
-                .filter(tdList -> tdList.get(1).getText().contains("Sleeveless Unicorn Patch Gown"))
+                .filter(tdList -> tdList.get(1).getText().contains(product))
                 .map(tdList -> tdList.get(5))
                 .map(td -> td.findElement(By.cssSelector(".cart_quantity_delete")))
                 .forEach(WebElement::click);

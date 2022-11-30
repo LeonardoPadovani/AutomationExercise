@@ -33,7 +33,7 @@ public class ComprasTest extends BaseTest{
         produtoPage.verProdutoDressKidDois();
         produtoPage.addToCart();
         produtoPage.viewCart();
-
+        produtoPage.deleteProduct();
 
 
     }

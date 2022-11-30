@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +32,15 @@ public class ProdutoPage extends BasePage {
 
     @FindBy(xpath = "//h4[normalize-space()='Added!']")
     private WebElement added;
+
+    @FindBy(tagName = "tr")
+    private WebElement tableTr;
+
+    @FindBy(tagName = "td")
+    private WebElement tableTd;
+
+    @FindBy(className = "cart_delete")
+    private WebElement btnCartDelete;
 
 
     public ProdutoPage(WebDriver driver) {
@@ -71,7 +81,16 @@ public class ProdutoPage extends BasePage {
 
     }
 
-    
+    public void deleteProduct(){
+        super.driver.findElements(By.tagName("tr")).stream()
+                .skip(1)
+                .map(tr -> tr.findElements(By.tagName("td")))
+                .filter(tdList -> tdList.get(1).getText().contains("Sleeveless Unicorn Patch Gown"))
+                .map(tdList -> tdList.get(5))
+                .map(td -> td.findElement(By.cssSelector(".cart_quantity_delete")))
+                .forEach(WebElement::click);
+
+    }
 
 
 }

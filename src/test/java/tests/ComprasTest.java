@@ -10,20 +10,12 @@ import pages.ProdutoPage;
 
 public class ComprasTest extends BaseTest{
 
-    HomePage homePage;
-    ProdutoPage produtoPage;
-
-    @Before
-    public void setupTest(){
-        this.homePage = new HomePage(super.driver);
-        this.produtoPage = new ProdutoPage(super.driver);
-    }
 
     @Test
     public void testCompras(){
         homePage.launchSite();
-        homePage.verificarLinkQuebrado("href");
-        homePage.verificarLinkQuebrado("src");
+        //homePage.verificarLinkQuebrado("href");
+       // homePage.verificarLinkQuebrado("src");
         homePage.clicarMenuProduto();
         produtoPage.clicarCategKids();
         produtoPage.clicarCategKidsDress();

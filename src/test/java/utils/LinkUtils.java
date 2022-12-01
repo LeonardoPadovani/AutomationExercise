@@ -1,8 +1,8 @@
-package util;
+package utils;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class CommonUtils {
+public class LinkUtils {
 
     // hits the given url and returns the HTTP response code
     public static int getResponseCode(String link) {

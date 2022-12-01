@@ -22,6 +22,8 @@ public class ComprasTest extends BaseTest{
     @Test
     public void testCompras(){
         homePage.launchSite();
+        homePage.verificarLinkQuebrado("href");
+        homePage.verificarLinkQuebrado("src");
         homePage.clicarMenuProduto();
         produtoPage.clicarCategKids();
         produtoPage.clicarCategKidsDress();
@@ -34,6 +36,8 @@ public class ComprasTest extends BaseTest{
         produtoPage.addToCart();
         produtoPage.viewCart();
         produtoPage.deleteProduct("Pink");
+
+       // (//a[contains(text(),'View Product')])[1]
 
 
     }

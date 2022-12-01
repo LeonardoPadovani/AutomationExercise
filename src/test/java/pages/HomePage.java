@@ -1,9 +1,16 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.json.JsonOutput;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import util.CommonUtils;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HomePage extends BasePage{
 
@@ -24,6 +31,17 @@ public class HomePage extends BasePage{
 
  public void clicarMenuProduto(){
      this.menuProduto.click();
+ }
+
+ public void verificarLinkQuebrado(String atributo){
+             List<String> list = super.driver.findElements(By.xpath("//*[@"+atributo+"]"))
+             .stream()
+             .map(e -> e.getAttribute(atributo))
+             .filter(atr -> CommonUtils.getResponseCode(atr) != 200)
+             .collect(Collectors.toList());
+     list.forEach(System.out::println);
+
+       Assert.assertEquals(list.size(),0);
  }
 
 }

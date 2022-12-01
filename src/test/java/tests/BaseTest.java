@@ -23,7 +23,7 @@ public class BaseTest {
 
     @After
     public void quitDriver(){
-        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         this.driver.quit();
     }
 
